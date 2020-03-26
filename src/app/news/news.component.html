@@ -1,0 +1,13 @@
+<h1>Híreink</h1>
+
+<article *ngFor="let item of newsCont">
+    <h3>{{item?.title}}</h3>
+    <div id="date">
+        <p>{{item?.month}}</p>
+        <p>{{item?.day}}</p>
+    </div>
+    <img src="assets/image/news/{{item?.id}}.jpg" alt="">
+    <div id="text">
+        <p>{{item?.text}}</p>
+    </div>
+</article>

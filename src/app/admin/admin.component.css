@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  position: relative;
+  top: 1%;
+  width: 100%;
+  text-align: center;
+  font-size: 3vh;
+  margin-top: 2rem;
+}
+
+#screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+dialog {
+  position: relative;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5vh;
+  text-align: center;
+  font-size: 1.5vh;
+  border: none;
+}
+
+.news-sent {
+  background-color: green;
+}
+
+.news-not-sent {
+  background-color: red;
+}
+
+form {
+  width: 75%;
+  align-items: center;
+  font-size: 1.4vh;
+}
+
+.form-group {
+  width: 100%;
+}
+
+label, select, input {
+  width: 100%;
+  font-size: 1.4vh;
+}
+
+label {
+  margin-bottom: .5rem;
+}
+
+select, input {
+  height: 4vh;
+}
+
+#text {
+  height: 30vh;
+  font-size: 1.4vh;
+}
+
+#sending {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: left;
+  justify-content: left;
+}
+
+#check {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: left;
+  margin: 0;
+}
+
+#check input {
+  margin-left: 2vh;
+  width: 2.5vh;
+  height: 2.5vh;
+  margin-top: 0;
+}
+
+#check label {
+  align-items: center;
+  width: initial;
+  height: 2vh;
+  margin: 0;
+}
+
+button {
+  align-self: center;
+  vertical-align: middle;
+  line-height: 2rem;
+  font-size: 2rem;
+  padding: .8rem;
+}
+
+button:disabled {
+  background-color: rgba(255, 0, 0, .4);
+}
+
+@media only screen and (min-width: 700px) {
+  form {
+    width: 500px;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  h1 {
+    font-size: 2.6vh;
+  }
+  #sending {
+    flex-flow: column;
+  }
+  #check {
+    justify-content: center;
+    margin-bottom: 1.5vh;
+  }
+}

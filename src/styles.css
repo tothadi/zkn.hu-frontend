@@ -1,1 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    flex-basis: auto;
+    font-size: 100%;
+}
+
+html {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    /*background: url(assets/image/background.png) repeat center;*/
+    background-color: white;
+    font-family: 'Libre Baskerville', serif;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 1px;
+    color: black;
+}
+
+
+p, li, a {
+    font-family: 'Muli', sans-serif;
+}
+
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(50, 50, 50, .6);
+    border-radius: 5px;
+}
+
+app-root {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .6);
+}
+
+.blur {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+}
+
+app-menu, app-footer {
+    background: url(assets/image/menu.jpg) no-repeat 70% center/cover;
+    width: 100%;
+    display: flex;  
+    justify-content: center;
+}
+
+app-footer {
+    order: 2;
+    /*border-radius: 5px;*/
+    height: 20vh;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+app-home, app-not-found, app-news, app-admin {
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 450px) {}

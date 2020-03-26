@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'zkn-hu';
+  title = 'Zalai Közszolgáltató Nonprofit Kft';
+  show: boolean;
+
+  constructor(private location: Location, private router: Router) { }
+
+  ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      if (this.location.path() === '/admin') {
+        this.show = false;
+      } else {
+        this.show = true;
+      }
+    });
+  }
 }
