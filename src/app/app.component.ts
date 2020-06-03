@@ -15,7 +15,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
-      if (this.location.path() === '/admin') {
+      if (this.location.path() === '/admin' || this.location.path() === '/merleg') {
         this.show = false;
       } else {
         this.show = true;

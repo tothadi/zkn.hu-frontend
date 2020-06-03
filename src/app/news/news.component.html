@@ -1,13 +1,35 @@
 <h1>Híreink</h1>
 
-<article *ngFor="let item of newsCont">
-    <h3>{{item?.title}}</h3>
-    <div id="date">
-        <p>{{item?.month}}</p>
-        <p>{{item?.day}}</p>
-    </div>
-    <img src="assets/image/news/{{item?.id}}.jpg" alt="">
-    <div id="text">
-        <p>{{item?.text}}</p>
+<article *ngFor="let item of newsCont | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" style="background-image: 
+url(assets/image/news/{{item.pics[0]}})">
+    <div class="wrapper">
+        <h3>{{item?.title}}</h3>
+
+        <div class="date">
+            <p>{{item?.date | date:'MMM':'+0200':'hu'}}</p>
+            <p>{{item?.date | date:'dd'}}</p>
+        </div>
+
+        <div class="gallery" *ngIf="item.pics.length > 0">
+            <div class="images">
+                <div class="imgCont">
+                    <div *ngFor="let data of item.pics" class="image"
+                        style="background-image: url(assets/image/news/{{data}})">
+                    </div>
+                </div>
+            </div>
+            <div class="buttons" *ngIf="item.pics.length > 1">
+                <button mat-raised-button (click)="toLeft(i)">előző</button>
+                <button mat-raised-button (click)="toRight(i)">következő</button>
+            </div>
+        </div>
+
+        <div class="text">
+            <p [innerHTML]="item?.text"></p>
+            <p class="sign" *ngIf="item?.sign"><strong>{{item?.sign}}</strong>, {{item?.rank}}</p>
+            <p>{{item?.date | date:'yyyy. MMMM dd., EEEE':'+0200':'hu'}}</p>
+        </div>
     </div>
 </article>
+<pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true" previousLabel="Előző" nextLabel="Következő">
+</pagination-controls>

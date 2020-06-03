@@ -1,0 +1,77 @@
+<h1>Hír hozzáadása</h1>
+
+<form (ngSubmit)="uploadNewsDialog()">
+    <div class="form-group">
+        <label for="title">Cím</label>
+        <input type="text" class="form-control" id="title" required [(ngModel)]="title" minlength="5" name="title"
+            placeholder="hír címe" #titleInput="ngModel">
+        <div class="help error" *ngIf="titleInput.invalid && titleInput.dirty">
+            A címnek legalább 5 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="text">A hír szövege</label>
+        <textarea class="textarea form-control" required [(ngModel)]="text" minlength="1" name="text"
+            placeholder="Írja be a hír szövegét" #textInput="ngModel"></textarea>
+        <div class="help error" *ngIf="textInput.invalid && textInput.dirty">
+            A hír szövegének legalább 100 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="sign">Aláírás</label>
+        <input type="text" class="form-control" id="sign" [(ngModel)]="sign" minlength="5" name="sign"
+            placeholder="aláírás (nem kötelező)" #signInput="ngModel">
+        <div class="help error" *ngIf="signInput.invalid && signInput.dirty">
+            Az aláírásnak legalább 5 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rank">Beosztás</label>
+        <input type="text" class="form-control" id="rank" [(ngModel)]="rank" minlength="3" name="rank"
+            placeholder="beosztás (nem kötelező)" #rankInput="ngModel">
+        <div class="help error" *ngIf="rankInput.invalid && rankInput.dirty">
+            A beosztásnak legalább 3 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div id="sending">
+        <button mat-raised-button [disabled]="titleInput.invalid || textInput.invalid || signInput.invalid || rankInput.invalid">Feltöltés</button>
+    </div>
+</form>
+
+<h1>Házhozmenő frissítése</h1>
+
+<form (ngSubmit)="updateSelectiveType()">
+
+    <div class="form-group">
+        <label for="type">Kategória</label>
+        <select class="form-control" id="type" required [(ngModel)]="selectedType" name="type" #typeInput="ngModel">
+            <option *ngFor="let item of categories" [value]=item.title>{{item.title}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="catTitle">Cím</label>
+        <input type="text" class="form-control" id="catTitle" required [(ngModel)]="catTitle" minlength="5" name="catTitle"
+        [value]="selective.title" #catTitleInput="ngModel">
+        <div class="help error" *ngIf="catTitleInput.invalid && catTitleInput.dirty">
+            A címnek legalább 5 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="catText">A kategória szövege</label>
+        <textarea class="textarea form-control" required [(ngModel)]="catText" minlength="1" name="catText"
+        [value]="selective.text" #catTextInput="ngModel"></textarea>
+        <div class="help error" *ngIf="catTextInput.invalid && catTextInput.dirty">
+            A kategória szövegének legalább 20 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div id="sending">
+        <button mat-raised-button [disabled]="catTitleInput.invalid || catTextInput.invalid">Feltöltés</button>
+    </div>
+</form>

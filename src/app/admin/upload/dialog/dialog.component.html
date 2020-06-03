@@ -1,0 +1,46 @@
+<input type="file" #file style="display: none" (change)="onFilesAdded()" multiple />
+<div class="container" fxLayout="column" fxLayoutAlign="space-evenly stretch">
+  <h1 mat-dialog-title>Képek feltöltése</h1>
+  <div>
+    <button [disabled]="uploading || uploadSuccessful || noFiles" mat-raised-button color="primary" class="add-files-btn"
+      (click)="addFiles()">
+      Kép(ek) hozzáadása
+    </button>
+    <div id="check" class="form-group"  *ngIf="!checkDisabled">
+      <label for="noFiles">Nem töltök fel képet</label>
+      <input type="checkbox" [(ngModel)]="noFiles" [ngModelOptions]="{standalone: true}" id="noFiles">
+    </div>
+  </div>
+
+  <!-- This is the content of the dialog, containing a list of the files to upload -->
+  <mat-dialog-content fxFlex>
+    <mat-list *ngIf="!noFiles">
+      <mat-list-item *ngFor="let file of files">
+        <h4 mat-line>{{file.name}}</h4>
+        <mat-progress-bar *ngIf="progress" mode="determinate" [value]="progress[file.name].progress | async">
+        </mat-progress-bar>
+      </mat-list-item>
+    </mat-list>
+  </mat-dialog-content>
+
+  <!-- This are the actions of the dialog, containing the primary and the cancel button-->
+  <mat-dialog-actions class="actions">
+    <button *ngIf="showCancelButton" mat-button mat-dialog-close>Mégse</button>
+
+
+    <div *ngIf="noFiles; then thenBlock else elseBlock"></div>
+
+    <ng-template #thenBlock>
+      <button mat-raised-button color="primary" [disabled]="!canBeClosed" (click)="closeDialog()">
+        Kész
+      </button>
+    </ng-template>
+
+    <ng-template #elseBlock>
+      <button mat-raised-button color="primary" [disabled]="!canBeClosed" (click)="closeDialog()">
+        {{primaryButtonText}}
+      </button>
+    </ng-template>
+
+  </mat-dialog-actions>
+</div>

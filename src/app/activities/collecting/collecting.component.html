@@ -1,0 +1,13 @@
+<div id="cont">
+    <h1>Házhoz menő gyűjtés</h1>
+    <img src="assets/image/close.png" alt="close" id="close" (click)="closeDialog()">
+    <div #cat id="categories">
+        <a #target (click)="scroll(target)" [ngClass]="{'clicked': item.clicked}" class="category"
+            *ngFor="let item of categories; let i = index">
+            <img class="cat-img" [ngClass]="{'clicked-img': item.clicked}" (click)="toggle(i)"
+                src="assets/image/selective/{{item.pic}}.jpg" alt="background">
+            <p *ngIf="item.clicked" [innerHTML]="item.text"></p>
+        </a>
+        <button mat-raised-button *ngIf="oneClicked" (click)="close()">bezár</button>
+    </div>
+</div>

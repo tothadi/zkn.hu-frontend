@@ -1,0 +1,54 @@
+* {
+    font-size: 1.5rem;
+}
+
+#top {
+    position: relative;
+    height: 10%;
+    width: 100%;
+}
+
+h1 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+#close {
+    position: absolute;
+    top: 25%;
+    right: 2.5%;
+    height: 75%;
+    width: auto;
+    padding: 1%;
+    filter: brightness(.8);
+    cursor: pointer;
+    transition: 1000 all ease-in ease-out;
+}
+
+#close:hover {
+    filter: brightness(1);
+    background-color: #00983A;
+}
+
+#container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 0;
+    height: 90%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+#text {
+    width: 90%;
+}
+

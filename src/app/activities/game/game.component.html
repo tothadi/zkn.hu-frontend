@@ -1,0 +1,68 @@
+<div id="container">
+
+    <a class="close" (click)="closeDialog()">x</a>
+
+    <div id="trashbins" [ngClass]="{
+    'blur': gameEnded
+}">
+        <div [ngClass]="{
+        'blur': gameEnded,
+        'no-click': !showFirst
+    }" class="pic" *ngFor="let bin of trashBins" (click)="showPic($event)">
+            <img src="assets/image/game/trashbins/{{bin.src}}.png" alt="{{bin.alt}}" draggable="false">
+        </div>
+    </div>
+
+    <div id="pictures" [ngClass]="{
+    'blur': gameEnded
+}">
+        <div [ngClass]="{
+    'blur': gameEnded,
+    'no-click': showFirst
+}" class="pic" *ngFor="let picture of pictures" (click)="showPic($event)">
+            <img draggable="false" src="assets/image/game/trash/{{picture}}.jpg" alt="{{picture}}">
+        </div>
+    </div>
+    <div *ngIf="!gameEnded" [ngClass]="{'started': gameEnded || !firstClick}" class="timer">
+        {{hours}}:{{minutes}}:{{seconds}}.{{milliseconds}}</div>
+
+    <div *ngIf="gameEnded" class="screen">
+        <dialog open>
+            <p>{{time}} alatt megoldottad!</p>
+
+            <form novalidate *ngIf="!saving" (ngSubmit)="uploadResult()">
+
+                <div class="form-group">
+                    <label for="sign">Az eredmény mentéséhez add meg a neved!</label>
+                    <input [disabled]="noSave" type="text" class="form-control" id="sign" [(ngModel)]="sign" required
+                        minlength="3" name="sign" placeholder="név (nem kötelező)" #signInput="ngModel">
+                    <div class="help error" *ngIf="signInput.invalid && signInput.dirty">
+                        Az névnek legalább 3 karakter hosszúságúnak kell lennie.
+                    </div>
+                </div>
+
+                <div id="found" *ngIf="found">
+                    <p class="red">Ez a név már létezik. Biztos ezzel mented?</p>
+                </div>
+
+                <div id="check" class="form-group">
+                    <label for="noSave">Nem szeretném menteni az eredményt.</label>
+                    <input type="checkbox" [(ngModel)]="noSave" [ngModelOptions]="{standalone: true}" id="noSave">
+                </div>
+
+                <div id="sending">
+                    <button *ngIf="!noSave" mat-raised-button [disabled]="signInput.invalid">Mentés</button>
+                    <button *ngIf="noSave" mat-raised-button [disabled]="signInput.invalid">Nincs mentés</button>
+                </div>
+            </form>
+            <p id="status" *ngIf="saving" [ngClass]="{
+            'saved': saved,
+            'nosave': !saved
+        }">
+                {{message}}
+            </p>
+        </dialog>
+
+    </div>
+
+</div>

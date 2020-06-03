@@ -1,0 +1,10 @@
+<div id="top">
+    <h1 *ngFor="let island of islands" [innerHTML]="island.title"></h1>
+    <img src="assets/image/close.png" alt="close" id="close" (click)="closeDialog()">
+</div>
+<div id="container">
+
+    <div *ngFor="let island of islands" id="text" [innerHTML]="island.text">
+    </div>
+
+</div>

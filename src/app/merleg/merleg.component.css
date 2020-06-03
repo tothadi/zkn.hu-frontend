@@ -1,0 +1,266 @@
+#container {
+    position: relative;
+    width: 70%;
+    max-width: 975px;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    align-items: center;
+}
+
+@media only screen and (orientation: portrait) {
+    #container {
+        width: 90%;
+    }
+}
+
+#state {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1% 0 1% 0;
+}
+
+#speaker {
+    position: absolute;
+    height: 10%;
+    cursor: pointer;
+    z-index: 2;
+    top: 2.5vh;
+    left: 2.5vh;
+}
+
+#cam {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+#screen {
+    height: 100%;
+    width: auto;
+    min-width: 50%;
+    background-color: green;
+}
+
+h1 {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: calc(10% + 5vh);
+    width: 100%;
+    font-size: 3rem;
+    margin: 0;
+    z-index: 1;
+}
+
+#data {
+    position: absolute;
+    bottom: 2.5%;
+    display: flex;
+    flex-flow: column;
+    align-self: center;
+    width: 30%;
+    height: 20%;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, .3);
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+#weight {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    line-height: 4vh;
+}
+
+#tables {
+    height: 41%;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+#toggles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 5vh;
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgb(2, 29, 2);
+    color: white;
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: green;
+}
+
+#today {
+    display: flex;
+    height: calc(100% - 5vh);
+}
+
+#byDate {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 5vh);
+}
+
+.active {
+    background-color: green;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    height: 6vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+}
+
+input {
+    height: 4vh;
+    font-size: 1.8rem;
+    color: black
+}
+
+input::placeholder {
+    color: lightgray;
+}
+
+button {
+    height: 4vh;
+    font-size: 1.8rem;
+    border-radius: 3px;
+    border: none;
+    margin-left: 5px;
+}
+
+#byDate table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    height: calc(100% - 6vh);
+}
+
+#today table {
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+thead {
+    height: 4vh;
+    background-color: green;
+    display: table;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+tbody {
+    display: block;
+    flex-direction: column;
+    background-color: rgb(2, 29, 2);
+    height: calc(100% - 4vh);
+    overflow-y: scroll;
+}
+
+thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    /* even columns width , fix width of table too*/
+}
+
+tr {
+    font-size: 1.8vh;
+    height: calc(3vh + 1px);
+    border-top: 1px solid green;
+    border-collapse: collapse;
+}
+
+td {
+    width: 25%;
+}
+
+.no-plate {
+    color: red;
+}
+
+footer {
+    width: 100%;
+    height: 5%;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(2, 29, 2);
+}
+
+#copy-right {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(190, 190, 190);
+}
+
+#copy-right p {
+    width: 100%;
+    text-align: center;
+    letter-spacing: normal;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+#copy-right a {
+    display: unset;
+    flex-direction: unset;
+    justify-content: unset;
+    text-align: unset;
+    height: 1.5rem;
+    width: 100%;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+fa-icon {
+    font-size: 1.5rem;
+    padding: 0;
+    margin-left: .5vh;
+    margin-right: .5vh;
+}

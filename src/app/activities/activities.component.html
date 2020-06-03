@@ -1,1 +1,19 @@
-<p>activities works!</p>
+<div id="toggles">
+    <a *ngFor="let item of menuItems; let i = index" class="menu-item" (click)="toggleMenu(i)"
+        [ngClass]="{'active': menuItems[i].show}">
+        <fa-icon [icon]="item.icon"></fa-icon>
+        <p>{{item?.title}}</p>
+    </a>
+</div>
+
+<section *ngFor="let item of menuItems; let i = index" [ngClass]="{'hide': !menuItems[i].show}">
+    <h1>{{item?.title}}</h1>
+    <div id="text" [innerHTML]="item?.text">
+    </div>
+    <div id="pics">
+        <a class="{{item.id}}" *ngFor="let data of item.pics; let j = index" (click)="openDialog(i, j)">
+            <h4 id="start" *ngIf="item.id === 'education'">Memóriajáték</h4>
+            <img src="assets/image/{{data}}" alt="{{data}}">
+        </a>
+    </div>
+</section>

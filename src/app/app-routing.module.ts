@@ -17,10 +17,12 @@ import { AuthoritiesComponent } from './authorities/authorities.component';
 import { PermitsComponent } from './permits/permits.component';
 import { ArchivesComponent } from './archives/archives.component';
 import { AdminComponent } from './admin/admin.component';
+import { MerlegComponent } from './merleg/merleg.component';
 
 const routes: Routes = [
   
   { path: 'admin', component: AdminComponent },
+  { path: 'merleg', component: MerlegComponent },
   { path: 'home', component: HomeComponent },
   { path: 'news', component: NewsComponent },
   { path: 'public-service', component: PublicServiceComponent },

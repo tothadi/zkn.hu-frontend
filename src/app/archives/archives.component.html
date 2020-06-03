@@ -1,1 +1,54 @@
-<p>archives works!</p>
+<h1>Archívum</h1>
+
+<form id="filters">
+    <div class="form-group">
+        <label for="year">Év</label>
+        <select class="form-control" id="year" required [(ngModel)]="selectedYear" name="year" #yearInput="ngModel">
+            <option *ngFor="let year of years" [value]=year>{{year}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="month">Hónap</label>
+        <select [disabled]="!yearInput.dirty" class="form-control" id="month" required [(ngModel)]="selectedMonth"
+            name="month" #monthInput="ngModel">
+            <option *ngFor="let month of months" [value]=month>{{month}}</option>
+        </select>
+    </div>
+
+</form>
+
+
+<article *ngFor="let item of newsCont; let i = index" [ngClass]="{'hide': !newsCont[i].show}" style="background-image: 
+url(assets/image/news/{{item.pics[0]}})">
+    <div class="wrapper">
+
+        <h3>{{item?.title}}</h3>
+
+        <div class="date">
+            <p>{{item?.date | date:'MMM':'+0200':'hu'}}</p>
+            <p>{{item?.date | date:'dd'}}</p>
+        </div>
+
+        <div class="gallery" *ngIf="item.pics.length > 0">
+            <div class="images">
+                <div class="imgCont">
+                    <div *ngFor="let data of item.pics" class="image" style="background-image: 
+        url(assets/image/news/{{data}})">
+                    </div>
+                </div>
+            </div>
+            <div class="buttons" *ngIf="item.pics.length > 1">
+                <button mat-raised-button (click)="toLeft(i)">előző</button>
+                <button mat-raised-button (click)="toRight(i)">következő</button>
+            </div>
+        </div>
+
+        <div class="text">
+            <p [innerHTML]="item?.text"></p>
+            <p class="sign" *ngIf="item?.sign"><strong>{{item?.sign}}</strong>, {{item?.rank}}</p>
+            <p>{{item?.date | date:'yyyy. MMMM dd., EEEE':'+0200':'hu'}}</p>
+        </div>
+
+    </div>
+</article>
