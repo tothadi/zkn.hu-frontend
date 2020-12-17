@@ -1,23 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Subject, Observable } from 'rxjs';
-import { News } from 'src/app/news.service';
+
+export interface Intro {
+  text: string,
+  sign: string,
+  rank: string
+}
+
+export interface Status {
+  saved: boolean,
+  message: any
+}
 
 @Injectable()
 export class UploadService {
 
-  public news
-  public url = '';
+  public senddata
+  public url = ''
 
   constructor(private http: HttpClient) { }
 
-  public getNews(news, url) {
-    this.news = news;
+  public updateIntro(intro: Intro): Observable<Status> {
+    return this.http.post<Status>('api/updateintro', intro);
+  }
+
+  public getData(data, url) {
+    this.senddata = data
     this.url = url
   }
 
   public getImageCount(count) {
-    this.news.picCount = count;
+    this.senddata.picCount = count;
   }
 
   public upload(
@@ -26,7 +40,7 @@ export class UploadService {
     // this will be the our resulting map
     const status: { [key: string]: { progress: Observable<number> } } = {};
 
-    const newsString = JSON.stringify(this.news).replace(/\\n\\n\\n/g, '</p><h4>').replace(/\\n\\n/g, '</h4><p>').replace(/\\n/g, '</p><p>')
+    const newsString = JSON.stringify(this.senddata).replace(/\\n\\n\\n/g, '</p><h4>').replace(/\\n\\n/g, '</h4><p>').replace(/\\n/g, '</p><p>')
 
     files.forEach(file => {
       // create a new multipart-form for every file

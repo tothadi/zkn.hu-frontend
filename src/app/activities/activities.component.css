@@ -17,12 +17,13 @@ a {
     justify-content: space-evenly;
     height: 10vh;
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: center;
     cursor: pointer;
     text-decoration: none;
     color: black;
     font-weight: bold;
+    transition: all .6s ease-in-out;
 }
 
 a p {
@@ -54,8 +55,9 @@ section {
 
 h1 {
     text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
 }
 
 #text {
@@ -68,20 +70,53 @@ h1 {
 #pics {
     width: 100%;
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     margin-bottom: 3rem;
 }
 
 #pics a {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
     height: fit-content;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.domestic, .business {
+    width: 24%;
     border-radius: 5px;
 }
 
-.selective {
-    width: 40%;
+#pics a .cat-title {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, .7);
+    color: white;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 2rem;
+    font-size: 1.5rem;
+    transition: all .6s ease-in-out;
+}
+
+@media only screen and (max-width: 450px) {
+    .domestic {
+        width: 48%;
+    }
+
+    #pics a .cat-title {
+        font-size: 1rem;
+    }
+}
+
+#pics a:hover .cat-title {
+    background-color: #00983A;
+    color: black;
+    font-weight: 900;
+    filter: brightness(1.5);
 }
 
 .education {
@@ -101,6 +136,12 @@ h1 {
 #pics img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
+}
+
+#trash-finder-pic {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 fa-icon {
@@ -110,3 +151,4 @@ fa-icon {
     align-content: center;
     justify-content: center;
 }
+

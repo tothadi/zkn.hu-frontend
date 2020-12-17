@@ -1,7 +1,6 @@
 <h1>Híreink</h1>
 
-<article *ngFor="let item of newsCont | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" style="background-image: 
-url(assets/image/news/{{item.pics[0]}})">
+<article *ngFor="let item of newsCont | paginate: { itemsPerPage: 10, currentPage: p }; let i = index"><!--style="background-image: url(assets/image/background.png)"-->
     <div class="wrapper">
         <h3>{{item?.title}}</h3>
 

@@ -43,8 +43,14 @@ p {
     margin-bottom: 2rem;
 }
 
+#date {
+    margin-top: 3rem;
+}
+
 #sign {
     margin-top: 4rem;
+    width: 100%;
+    text-align: right;
 }
 
 #contact {

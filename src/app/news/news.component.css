@@ -33,9 +33,10 @@ select {
 }
 
 article {
-    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center;*/
+    background: url(/assets/image/background.png) repeat center;
     position: relative;
     width: 90%;
     margin-bottom: 3rem;
@@ -50,7 +51,7 @@ article::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0/*.9*/);
 }
 
 .wrapper {
@@ -125,8 +126,8 @@ button {
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
-    background-color: white;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .3);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .7);
 }
 
 .imgCont {

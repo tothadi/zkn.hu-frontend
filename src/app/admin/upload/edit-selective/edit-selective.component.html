@@ -1,0 +1,33 @@
+<h1>Házhozmenő frissítése</h1>
+
+<form (ngSubmit)="updateSelectiveType()">
+
+    <div class="form-group">
+        <label for="type">Kategória</label>
+        <select class="form-control" id="type" required [(ngModel)]="selectedType" name="type" #typeInput="ngModel">
+            <option *ngFor="let item of categories" [value]=item.title>{{item.title}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="catTitle">Cím</label>
+        <input type="text" class="form-control" id="catTitle" required [(ngModel)]="catTitle" minlength="5"
+            name="catTitle" [value]="selective.title" #catTitleInput="ngModel">
+        <div class="help error" *ngIf="catTitleInput.invalid && catTitleInput.dirty">
+            A címnek legalább 5 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="catText">A kategória szövege</label>
+        <textarea class="textarea form-control" required [(ngModel)]="catText" minlength="20" name="catText"
+            [value]="selective.text" #catTextInput="ngModel"></textarea>
+        <div class="help error" *ngIf="catTextInput.invalid && catTextInput.dirty">
+            A kategória szövegének legalább 20 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div id="sending">
+        <button mat-raised-button [disabled]="catTitleInput.invalid || catTextInput.invalid">Feltöltés</button>
+    </div>
+</form>

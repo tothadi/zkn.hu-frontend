@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UploadService } from '../upload.service';
 import { forkJoin } from 'rxjs';
-import { NewsService } from 'src/app/news.service';
 
 @Component({
   selector: 'app-dialog',
@@ -14,7 +13,7 @@ export class DialogComponent implements OnInit {
 
   public files: Set<File> = new Set();
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: UploadService, public newsService: NewsService) { }
+  constructor(public dialogRef: MatDialogRef<DialogComponent>, public uploadService: UploadService) { }
 
   ngOnInit() { }
 
@@ -52,7 +51,7 @@ export class DialogComponent implements OnInit {
     // upload news without pictures
     if (!this.uploadSuccessful && this.noFiles) {
 
-      const dummy = new File([`${JSON.stringify(this.uploadService.news)}`], "dummy.json", {type: "text/plain", lastModified: new Date().getTime()})
+      const dummy = new File([`${JSON.stringify(this.uploadService.senddata)}`], "dummy.json", {type: "text/plain", lastModified: new Date().getTime()})
       this.files.add(dummy)
       this.uploadService.getImageCount(this.files.size)
     }

@@ -11,9 +11,10 @@
     <div id="text" [innerHTML]="item?.text">
     </div>
     <div id="pics">
-        <a class="{{item.id}}" *ngFor="let data of item.pics; let j = index" (click)="openDialog(i, j)">
-            <h4 id="start" *ngIf="item.id === 'education'">Memóriajáték</h4>
-            <img src="assets/image/{{data}}" alt="{{data}}">
+        <a class="{{item.id}}" *ngFor="let sub of item.subcomponents; let j = index" (click)="openDialog(i, j)">
+            <img id="{{sub?.id}}-pic" src="assets/image/activities/{{sub?.pic}}" alt="{{sub?.pic}}">
+            <div class="cat-title">{{sub?.title}}</div>
         </a>
+        
     </div>
 </section>

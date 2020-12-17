@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NewsService } from '../news.service';
+import { DataService } from '../data.service';
 import { registerLocaleData } from '@angular/common';
 import localeHu from '@angular/common/locales/hu';
 registerLocaleData(localeHu, 'hu');
@@ -47,7 +47,7 @@ export class ArchivesComponent implements OnInit {
     return Array.from(new Set(a));
   }
 
-  constructor(private NewsService: NewsService) { }
+  constructor(private NewsService: DataService) { }
 
   ngOnInit() {
 

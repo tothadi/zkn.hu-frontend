@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../news.service';
+import { DataService } from '../data.service';
 import { registerLocaleData } from '@angular/common';
 import localeHu from '@angular/common/locales/hu';
 registerLocaleData(localeHu, 'hu');
@@ -28,7 +28,7 @@ export class NewsComponent implements OnInit {
     this.newsCont[i].pics.push(first)
   }
 
-  constructor(private NewsService: NewsService) { }
+  constructor(private NewsService: DataService) { }
 
   ngOnInit() {
     this.NewsService.getNews().subscribe(news$ => {

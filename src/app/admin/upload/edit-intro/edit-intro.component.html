@@ -1,0 +1,38 @@
+<h1>Bemutatkozó szöveg szerkesztése</h1>
+
+<p>Utolsó módosítás: {{date | date:'yyyy.MM.dd'}}</p>
+
+<form (ngSubmit)="updateIntro()">
+    
+    <div class="form-group">
+        <label for="text">A bemutatkozás szövege</label>
+        <textarea class="textarea form-control" required [(ngModel)]="text" minlength="20" name="text"
+            #textInput="ngModel"></textarea>
+        <div class="help error" *ngIf="textInput.invalid && textInput.dirty">
+            A bemutatkozás szövegének legalább 20 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="sign">Aláírás</label>
+        <input type="text" class="form-control" id="sign" required [(ngModel)]="sign" minlength="8"
+            name="sign" #signInput="ngModel">
+        <div class="help error" *ngIf="signInput.invalid && signInput.dirty">
+            A címnek legalább 8 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rank">Beosztás</label>
+        <input type="text" class="form-control" id="rank" required [(ngModel)]="rank" minlength="5"
+            name="rank" #rankInput="ngModel">
+        <div class="help error" *ngIf="rankInput.invalid && rankInput.dirty">
+            A címnek legalább 5 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div id="sending">
+        <button mat-raised-button
+            [disabled]="textInput.invalid || signInput.invalid || rankInput.invalid">Módosítás</button>
+    </div>
+</form>

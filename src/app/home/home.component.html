@@ -6,22 +6,9 @@
         <figcaption><strong>Horváth Márton</strong>, ügyvezető</figcaption>
     </figure>
     <div id="text">
-        <p>A hulladékgazdálkodási közszolgáltatási tevékenység végzésének feltételeit 2013. január 1-től a Hulladékokról
-            szóló 2012. évi CLXXXV. törvény szabályozza. A törvény - különböző határidőkkel - szigorú feltételeket
-            állított fel a közszolgáltatás végzését ellátni kívánó gazdasági szereplők részére (meghatározott
-            tulajdonosi szerkezet, nonprofit cégforma, új típusú hatósági engedélyek megszerzése).</p>
-        <p>A hulladékgazdálkodási közszolgáltatási tevékenységet Zalaegerszegen és a környező településeken eddig
-            végző ZALA-DEPO Kft. tulajdonosa, Zalaegerszeg Megyei Jogú Város Önkormányzata a helyzetet mérlegelve azt a
-            döntést hozta, hogy a közszolgáltatási feladatok ellátására új társaságot alapít. Az új társaság feladata
-            így a jogszabályi előírásoknak megfelelve Zalaegerszeg város területén a közszolgáltatás megszervezése,
-            ellátása. A Közszolgáltató Kft. rövid és középtávon még nem fog önálló, saját tulajdonú műszaki hátterét
-            kiépíteni, ezért a feladatainak ellátásához döntően alvállalkozói segítséget vesz igénybe. A zökkenőmentes
-            közszolgáltató váltás érdekében az új Kft. irányítása és szakemberei a Zala-Depo Kft.-nél ezen a területen
-            már tapasztalatot szerzett alkalmazottakból állt fel, illetve fog kibővülni.</p>
-        <p>A Zalaegerszeg-Búslakpusztai Regionális Hulladéklerakó, a Zalaegerszegi hulladékudvarok üzemeltetését,
-            valamint az egyedi szállítási szolgáltatásokat (pl. konténeres megrendelések épület felújításhoz, stb.)
-            továbbra is a Zala-Müllex Kft. látja el.</p>
-        <p id="sign">Zalaegerszeg, 2016. június 20. Horváth Márton ügyvezető</p>
+        <div [innerHTML]="introtext"></div>
+        <p id="date">Zalaegerszeg, {{date | date:'yyyy.MM.dd'}}</p>
+        <p id="sign"><strong>{{sign}}</strong>, {{rank}}</p>
     </div>
     <div id="contact">
         <h3>Kapcsolat</h3>

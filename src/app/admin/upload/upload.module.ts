@@ -12,13 +12,19 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { UploadComponent } from './upload.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { EditNewsComponent } from './edit-news/edit-news.component';
+import { EditSelectiveComponent } from './edit-selective/edit-selective.component';
+import { EditIntroComponent } from './edit-intro/edit-intro.component';
 
 
 
 @NgModule({
   declarations: [
     UploadComponent,
-    DialogComponent
+    DialogComponent,
+    EditNewsComponent,
+    EditSelectiveComponent,
+    EditIntroComponent
   ],
   imports: [
     CommonModule,

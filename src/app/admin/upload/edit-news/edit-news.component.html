@@ -1,0 +1,44 @@
+<h1>Hír hozzáadása</h1>
+
+<form (ngSubmit)="uploadNewsDialog()">
+    <div class="form-group">
+        <label for="title">Cím</label>
+        <input type="text" class="form-control" id="title" required [(ngModel)]="title" minlength="5" name="title"
+            placeholder="hír címe" #titleInput="ngModel">
+        <div class="help error" *ngIf="titleInput.invalid && titleInput.dirty">
+            A címnek legalább 5 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="text">A hír szövege</label>
+        <textarea class="textarea form-control" required [(ngModel)]="text" minlength="1" name="text"
+            placeholder="Írja be a hír szövegét" #textInput="ngModel"></textarea>
+        <div class="help error" *ngIf="textInput.invalid && textInput.dirty">
+            A hír szövegének legalább 100 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="sign">Aláírás</label>
+        <input type="text" class="form-control" id="sign" [(ngModel)]="sign" minlength="5" name="sign"
+            placeholder="aláírás (nem kötelező)" #signInput="ngModel">
+        <div class="help error" *ngIf="signInput.invalid && signInput.dirty">
+            Az aláírásnak legalább 5 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rank">Beosztás</label>
+        <input type="text" class="form-control" id="rank" [(ngModel)]="rank" minlength="3" name="rank"
+            placeholder="beosztás (nem kötelező)" #rankInput="ngModel">
+        <div class="help error" *ngIf="rankInput.invalid && rankInput.dirty">
+            A beosztásnak legalább 3 karakter hosszúságúnak kell lennie.
+        </div>
+    </div>
+
+    <div id="sending">
+        <button mat-raised-button
+            [disabled]="titleInput.invalid || textInput.invalid || signInput.invalid || rankInput.invalid">Feltöltés</button>
+    </div>
+</form>

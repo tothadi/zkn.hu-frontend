@@ -1,4 +1,5 @@
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +15,6 @@ html {
 }
 
 body {
-    /*background: url(assets/image/background.png) repeat center;*/
     background-color: white;
     font-family: 'Muli', sans-serif;
     width: 100%;
@@ -24,6 +24,11 @@ body {
     justify-content: center;
     letter-spacing: 1px;
     color: black;
+}
+
+.scrolloff {
+    position: fixed;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -47,12 +52,13 @@ h1, h2, h3, h4 {
 }
 
 app-root {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100%;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, .6);
 }
 
@@ -61,50 +67,63 @@ app-root {
     filter: blur(3px);
 }
 
-app-menu, app-footer {
-    background: url(assets/image/menu.jpg) no-repeat 70% center/cover;
+app-menu {
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
-app-footer {
-    order: 2;
-    /*border-radius: 5px;*/
-    height: 20vh;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-}
-
-app-home, app-not-found, app-news, app-admin, app-archives, app-activities, app-authorities, app-career, app-contact, app-customer-service, app-gallery, app-legal, app-media, app-permits, app-pub-data, app-public-service {
+app-home, app-not-found, app-news, app-archives, app-activities, app-authorities, app-career, app-contact, app-customer-service, app-calendar, app-legal, app-media, app-permits, app-pub-data {
     width: 100%;
-    min-height: 70vh;
     max-width: 1400px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-app-collecting, app-island {
+app-calendar {
+    position: relative;
+    height: 90vh;
+}
+
+app-admin {
     width: 100%;
     height: 100%;
 }
 
-app-merleg {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin: 0;
+.overl {
     display: flex;
-    flex-flow: column;
-    align-content: center;
+    opacity: 1;
+    justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0);
-    color: white!important;
+}
+
+mat-dialog-container {
+    background: url(src/assets/image/background.png) repeat center;
+    z-index: 1000;
+    padding: 0!important;
+}
+
+.mat-progress-bar-fill::after {
+    background-color: #00983A;
+    border-radius: 3px;
+}
+
+.mat-progress-bar-buffer {
+    background: #a9e9c1;
+}
+
+#garbage {
+    height: 90%;
+    width: 90%;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+}
+
+#game {
+    padding: 0;
+}
+
+#upload-news, #update-selective {
+    width: 50%;
+    height: 50%;
 }
 
 h2 {
@@ -120,7 +139,7 @@ ul {
 }
 
 p, ul {
-    text-align: justify;
+    text-align: left;
 }
 
 strong {

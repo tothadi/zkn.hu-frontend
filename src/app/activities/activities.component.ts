@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import { faRecycle } from '@fortawesome/free-solid-svg-icons'
-import { faGlobeEurope } from '@fortawesome/free-solid-svg-icons'
-import { faDumpster } from '@fortawesome/free-solid-svg-icons'
+import { Component, OnInit, Renderer2 } from '@angular/core'
+import { faDumpster, faGlobeEurope, faIndustry, faRecycle, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { MatDialog } from '@angular/material/dialog'
-import { IslandComponent} from './island/island.component'
-import { CollectingComponent} from './collecting/collecting.component'
-import { GameComponent } from './game/game.component'
+import { GarbageComponent } from './garbage/garbage.component'
+import { TrashfinderComponent } from './trashfinder/trashfinder.component'
 
-import { ActivitiesService} from '../activities.service'
+import { DataService } from '../data.service'
 
 @Component({
   selector: 'app-activities',
@@ -17,31 +13,24 @@ import { ActivitiesService} from '../activities.service'
 })
 
 export class ActivitiesComponent implements OnInit {
-  
+
   menuItems = [
     {
-      id: 'domestic',
+      id: 'business',
       title: '',
-      icon: faTrashAlt,
+      icon: faIndustry,
       show: true,
-      text: '',
-      pics: ''
+      text: ''
     },
     {
-      id: 'selective',
+      id: 'domestic',
       title: '',
       icon: faRecycle,
       show: false,
       text: '',
-      pics: [],
       subcomponents: [
-        IslandComponent,
-        CollectingComponent
-      ],
-      size: {
-        width: '80%',
-        height: '80%'
-      }
+
+      ]
     },
     {
       id: 'junkyard',
@@ -49,7 +38,6 @@ export class ActivitiesComponent implements OnInit {
       icon: faDumpster,
       show: false,
       text: '',
-      pics: []
     },
     {
       id: 'education',
@@ -57,16 +45,13 @@ export class ActivitiesComponent implements OnInit {
       icon: faGlobeEurope,
       show: false,
       text: '',
-      pics: [],
-      subcomponents: [ 
-        GameComponent
-      ],
-      size: {
-        width: '100vw',
-        height: '100vh'
-      }
+      subcomponents: [
+
+      ]
     }
   ]
+
+  trashfinder = TrashfinderComponent
 
   toggleMenu(i) {
     for (var c = 0; c < this.menuItems.length; c++) {
@@ -76,11 +61,46 @@ export class ActivitiesComponent implements OnInit {
   }
 
   openDialog(i, j) {
-    const comp = this.menuItems[i].subcomponents[j]
-    const dialogRef = this.dialog.open(comp as any, this.menuItems[i].size);
+    const data = this.menuItems[i].subcomponents[j]
+    let options: any
+    let comp: any
+
+    if (data.type === 'info') {
+      options = {
+        id: 'garbage',
+        panelClass: 'overl',
+        maxWidth: '1400px',
+        width: '100vw',
+        height: '100vh',
+        data: {
+          title: data.title,
+          text: data.text,
+          pic: data.pic
+        }
+      }
+      comp = GarbageComponent
+    } else if (data.type === 'game') {
+      options = {
+        id: data.id,
+        panelClass: 'overl',
+        maxWidth: '100vw',
+        width: '100vw',
+        height: '100vh',
+      }
+      const compName = data.id.replace('-', '')
+      comp = eval(`this.${compName}`)
+    }
+
+    console.log()
+
+    const dialogRef = this.dialog.open(comp as any, options)
+
+    this.renderer.addClass(document.body, 'scrolloff')
   }
 
-  constructor(public dialog: MatDialog, private ActivitiesService: ActivitiesService) { }
+  constructor(public dialog: MatDialog, private ActivitiesService: DataService, private renderer: Renderer2) {
+
+  }
 
   ngOnInit() {
     this.ActivitiesService.getActivities().subscribe(activities$ => {
@@ -88,11 +108,12 @@ export class ActivitiesComponent implements OnInit {
       for (var i = 0; i < activities.length; i++) {
         this.menuItems[i].title = activities[i].title
         this.menuItems[i].text = activities[i].text
-        this.menuItems[i].pics = activities[i].pics
+        this.menuItems[i].subcomponents = activities[i].subs
       }
     }, (err) => {
       console.error(err)
     })
+
   }
 
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser'
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { UploadModule } from './admin/upload/upload.module'
 import { MatButtonModule } from '@angular/material/button'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { NgxPaginationModule } from 'ngx-pagination'
@@ -18,9 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component'
 import { FooterComponent } from './footer/footer.component'
 import { MenuComponent } from './menu/menu.component'
 import { NewsComponent } from './news/news.component'
-import { PublicServiceComponent } from './public-service/public-service.component'
 import { ActivitiesComponent } from './activities/activities.component'
-import { GalleryComponent } from './gallery/gallery.component'
 import { MediaComponent } from './media/media.component'
 import { ContactComponent } from './contact/contact.component'
 import { CareerComponent } from './career/career.component'
@@ -31,15 +30,14 @@ import { AuthoritiesComponent } from './authorities/authorities.component'
 import { PermitsComponent } from './permits/permits.component'
 import { ArchivesComponent } from './archives/archives.component'
 import { AdminComponent } from './admin/admin.component'
-import { CollectingComponent } from './activities/collecting/collecting.component'
-import { IslandComponent } from './activities/island/island.component'
-import { GameComponent } from './activities/game/game.component'
-import { MerlegComponent } from './merleg/merleg.component'
+import { CalendarComponent } from './calendar/calendar.component';
+import { GarbageComponent } from './activities/garbage/garbage.component'
+import { TrashfinderComponent } from './activities/trashfinder/trashfinder.component'
 
-import { NewsService } from './news.service'
-import { ActivitiesService } from './activities.service'
-import { ResultService } from './result.service'
-import { WeightsService } from './weights.service'
+import { ResultService } from './result.service';
+import { DataService } from './data.service';
+import { FullmenuComponent } from './menu/fullmenu/fullmenu.component';
+import { SmallmenuComponent } from './menu/smallmenu/smallmenu.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +47,7 @@ import { WeightsService } from './weights.service'
     FooterComponent,
     MenuComponent,
     NewsComponent,
-    PublicServiceComponent,
     ActivitiesComponent,
-    IslandComponent,
-    CollectingComponent,
-    GalleryComponent,
     MediaComponent,
     ContactComponent,
     CareerComponent,
@@ -64,8 +58,11 @@ import { WeightsService } from './weights.service'
     PermitsComponent,
     ArchivesComponent,
     AdminComponent,
-    GameComponent,
-    MerlegComponent
+    CalendarComponent,
+    GarbageComponent,
+    TrashfinderComponent,
+    FullmenuComponent,
+    SmallmenuComponent
   ],
   imports: [
     BrowserModule,
@@ -79,16 +76,18 @@ import { WeightsService } from './weights.service'
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
+    MatProgressBarModule,
     NgxPaginationModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [
-    NewsService,
-    ActivitiesService,
     ResultService,
-    WeightsService
+    DataService
   ],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [
+    NO_ERRORS_SCHEMA,
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

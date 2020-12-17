@@ -1,0 +1,41 @@
+#logo {
+    height: 100%;
+    width: 20%;
+    max-width: 280px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#menu-items {
+    height: 100%;
+    width: 80%;
+    max-width: 1120px;
+    display: flex;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#menu-items a {
+    text-decoration: none;
+    font-size: 1.6rem;
+    padding: 1rem;
+    color: #515151;
+    transition: all .6s ease-in-out;
+}
+
+#menu-items a.active {
+    background-color: #00983A;
+    color: white;
+}
+
+#menu-items a:hover {
+    background-color: #00983A;
+}
