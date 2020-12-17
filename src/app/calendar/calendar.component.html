@@ -6,14 +6,14 @@
         </select>
     </div>
 
-    <div *ngIf="this.selectedCity === 'Zalaegerszeg'" class="form-group">
+    <div *ngIf="selectedCity === 'Zalaegerszeg'" class="form-group">
         <label for="type">Ingatlan jellege</label>
         <select class="form-control" id="type" [(ngModel)]="selectedTypeName" name="type" #typeInput="ngModel">
             <option *ngFor="let type of types" [value]=type>{{type}}</option>
         </select>
     </div>
 
-    <div *ngIf="this.selectedType && this.selectedCity === 'Zalaegerszeg'" class="form-group">
+    <div *ngIf="selectedType && selectedCity === 'Zalaegerszeg'" class="form-group">
         <label for="street">Utca</label>
         <select class="form-control" id="street" [(ngModel)]="selectedStreet" name="street" #streetInput="ngModel">
             <option *ngFor="let street of streets" [value]=street.street>{{street?.street}}</option>
@@ -23,9 +23,9 @@
 </form>
 <form id="filtCat">
     <div *ngFor="let color of colors" class="{{color.color}} colorCodes form-group">
-        <input type="checkbox" [(ngModel)]="color.show" [ngModelOptions]="{standalone: true}" (change)="colorChecked()"
-            [disabled]="!this.selectedType">
-        <label for="color">{{color.label}}</label>
+        <input type="checkbox" [(ngModel)]="color.show" [ngModelOptions]="{standalone: true}"
+            (change)="colorChecked()" [disabled]="!selectedType">
+        <label for="color">{{color?.label}}</label>
     </div>
 </form>
 
@@ -34,24 +34,24 @@
 <div id="calendar" #calendar>
     <div class="dayName" *ngFor="let dayName of dayNames; let i = index" [style.gridColumnStart]="i + 1"
         [style.gridColumnEnd]="i + 1">
-        <h4 [style.height.px]="blockSize.height/2">{{dayName}}</h4>
+        <h4 [style.height.px]="blockSize?.height / 2">{{dayName}}</h4>
     </div>
-    <div class="day" *ngFor="let day of days; let d = index" [style.gridRowStart]="day.week +1"
-        [style.gridRowEnd]="day.week+ 1" [style.gridColumnStart]="day.day" [style.gridColumnEnd]="day.day">
-        <div class="dayBlock" [style.height.px]="blockSize.height" [style.width.px]="blockSize.width" [ngClass]="{
-                'hide': !day.show,
-                'today': day.today
+    <div class="day" *ngFor="let day of days; let d = index" [style.gridRowStart]="day?.week +1"
+        [style.gridRowEnd]="day?.week + 1" [style.gridColumnStart]="day?.day" [style.gridColumnEnd]="day?.day">
+        <div class="dayBlock" [style.height.px]="blockSize?.height" [style.width.px]="blockSize?.width" [ngClass]="{
+                'hide': !day?.show,
+                'today': day?.today
             }">
             <div id="dayText">
-                <p class="dayNum" [style.lineHeight.px]="blockSize.numSize" [style.fontSize.px]="blockSize.numSize"
-                    [style.marginLeft.px]="blockSize.margin" [ngClass]="{'red': day.holiday}">
-                    {{day.date}}
+                <p class="dayNum" [style.lineHeight.px]="blockSize?.numSize" [style.fontSize.px]="blockSize?.numSize"
+                    [style.marginLeft.px]="blockSize?.margin" [ngClass]="{'red': day?.holiday}">
+                    {{day?.date}}
                 </p>
-                <p class="holiday" *ngIf="day.holiday && day.holiday !== 'vasárnap'"
-                    [style.lineHeight.px]="blockSize.holidaySize" [style.fontSize.px]="blockSize.holidaySize"
-                    [style.marginLeft.px]="blockSize.margin *2">{{day.holiday}}</p>
+                <p class="holiday" *ngIf="day?.holiday && day?.holiday !== 'vasárnap'"
+                    [style.lineHeight.px]="blockSize?.holidaySize" [style.fontSize.px]="blockSize?.holidaySize"
+                    [style.marginLeft.px]="blockSize?.margin *2">{{day?.holiday}}</p>
             </div>
-            <div class="colors" *ngFor="let color of day.colors" class="{{color}}"></div>
+            <div class="colors" *ngFor="let color of day?.colors" class="{{color}}"></div>
         </div>
     </div>
 </div>
